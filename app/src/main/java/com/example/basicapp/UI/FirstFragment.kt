@@ -2,10 +2,10 @@ package com.example.basicapp.UI
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.basicapp.databinding.FragmentFirstBinding
 
 /**
@@ -44,10 +44,14 @@ class FirstFragment : Fragment() {
         viewModel.heroes.observe(viewLifecycleOwner){
             Log.d("SUPERHEROES", it.toString())
         }
+        var token = (activity as SuperHeroesActivity).getPrefs("hola")
+        Log.d("token first", token.toString())
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+
 }

@@ -1,5 +1,6 @@
 package com.example.basicapp.UI
 
+import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
@@ -34,5 +35,10 @@ class SuperHeroesActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
+    }
+
+    fun getPrefs(key: String): String? {
+        val prefs = getSharedPreferences("auth", Context.MODE_PRIVATE)
+        return prefs.getString(key, "")
     }
 }
