@@ -5,27 +5,26 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.basicapp.Data.Repository
+import com.example.basicapp.Data.RepositoryImpl
 import com.example.basicapp.Data.remote.GetHeroesResponse
+import com.keepcoding.androidavanzado.ui.model.Superhero
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import okhttp3.OkHttpClient
+import javax.inject.Inject
 
-class SuperHeroViewModel : ViewModel() {
+@HiltViewModel
+class SuperHeroViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
 
-    private val repository = Repository()
-
-    private val _heroes = MutableLiveData<List<GetHeroesResponse>>()
-    val heroes: LiveData<List<GetHeroesResponse>> get() = _heroes
-
+    private val _heroes = MutableLiveData<List<Superhero>>()
+    val heroes: LiveData<List<Superhero>> get() = _heroes
 
     fun getHeroes() {
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {
                 repository.getHeroes() // Thread.sleep(1000)
             }
-
             _heroes.value = result
         }
     }

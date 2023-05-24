@@ -6,20 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.basicapp.databinding.FragmentFirstBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
+@AndroidEntryPoint
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
 
+    private val viewModel: SuperHeroViewModel by viewModels()
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private val viewModel = SuperHeroViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,16 +34,27 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.heroesList.adapter = SuperHeroAdapter()
+        val adapter = SuperHeroAdapter()
+        binding.heroesList.adapter = adapter
 
+        viewModel.getHeroes()
 
         binding.fab.setOnClickListener {
-            viewModel.getHeroes()
+
         }
 
-        viewModel.heroes.observe(viewLifecycleOwner){
-            Log.d("SUPERHEROES", it.toString())
+        viewModel.heroes.observe(viewLifecycleOwner){ heroes ->
+            Log.d("SUPERHEROES", heroes.toString())
+            val superHeroNames = heroes.map { hero ->
+                hero.name
+            }
+            adapter.heroesList.clear()
+            adapter.heroesList.addAll(superHeroNames)
+            adapter.notifyDataSetChanged()
         }
+
+
+
         var token = (activity as SuperHeroesActivity).getPrefs("hola")
         Log.d("token first", token.toString())
     }
@@ -52,6 +63,4 @@ class FirstFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
 }

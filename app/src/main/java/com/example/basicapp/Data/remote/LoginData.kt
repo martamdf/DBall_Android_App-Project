@@ -5,6 +5,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
+import java.nio.charset.Charset
 
 class LoginData {
 
@@ -21,7 +22,9 @@ class LoginData {
     private val api: DragonBallApi = retrofit.create(DragonBallApi::class.java)
 
     suspend fun getToken(email: String, pass: String): String {
-        val credentials = Credentials.basic(email, pass)
+        val USER = "marta.maquedano@gmail.es"
+        val PASS = "unacontraseñasupersegura"
+        val credentials = Credentials.basic(USER, PASS, Charset.defaultCharset())
         return api.getToken(credentials)
     }
 }

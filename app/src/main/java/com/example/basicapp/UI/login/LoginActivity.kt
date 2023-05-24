@@ -27,25 +27,16 @@ class LoginActivity : AppCompatActivity() {
 
         binding.button.setOnClickListener {
             tryLogin()
-            launchActivity()
         }
 
         lifecycleScope.launch {
             viewModel.uiState.collect{
                 when (it){
                     is UiState.OnTokenReceived -> saveToken(it.token)
-                    is UiState.Idle -> Unit
-                    is UiState.Error -> showError(viewModel.uiState.value.toString())
+                    is UiState.Idle -> Log.d("idle", viewModel.uiState.value.toString())
                 }
             }
         }
-        //setSupportActionBar(binding.toolbar)
-
-        /*
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)*/
-
     }
 
     private fun tryLogin(){
@@ -55,6 +46,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun launchActivity(){
+
         val intent = Intent(this, SuperHeroesActivity::class.java)
         startActivity(intent)
     }
@@ -68,6 +60,7 @@ class LoginActivity : AppCompatActivity() {
         val editor = prefs.edit()
         editor.putString("token", value)
         editor.apply()
+        launchActivity()
     }
 }
 

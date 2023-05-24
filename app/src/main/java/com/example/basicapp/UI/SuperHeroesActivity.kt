@@ -10,7 +10,9 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.basicapp.R
 import com.example.basicapp.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SuperHeroesActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration

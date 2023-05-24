@@ -9,17 +9,7 @@ import com.example.basicapp.R
 
 class SuperHeroAdapter : RecyclerView.Adapter<SuperHeroAdapter.SuperHeroViewHolder>(){
 
-    val heroesList = listOf("Heroe 1",
-    "Heroe 2",
-    "Heroe 3",
-    "Heroe 4",
-    "Heroe 5",
-    "Heroe 6",
-    "Heroe 7",
-    "Heroe 8",
-    "Heroe 9",
-    "Heroe 10",
-    )
+    val heroesList = mutableListOf<String>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuperHeroViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.heroe_cell, parent, false)
