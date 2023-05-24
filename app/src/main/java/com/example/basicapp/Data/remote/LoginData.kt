@@ -22,9 +22,7 @@ class LoginData {
     private val api: DragonBallApi = retrofit.create(DragonBallApi::class.java)
 
     suspend fun getToken(email: String, pass: String): String {
-        val USER = "marta.maquedano@gmail.es"
-        val PASS = "unacontraseñasupersegura"
-        val credentials = Credentials.basic(USER, PASS, Charset.defaultCharset())
+        val credentials = Credentials.basic(email, pass, Charset.defaultCharset())
         return api.getToken(credentials)
     }
 }
