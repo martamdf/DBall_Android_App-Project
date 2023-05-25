@@ -3,9 +3,9 @@ package com.example.basicapp.Data
 import com.example.basicapp.Data.local.LocalDataSource
 import com.example.basicapp.Data.mappers.LocalToPresentationMapper
 import com.example.basicapp.Data.mappers.RemoteToLocalMapper
-import com.example.basicapp.Data.remote.RemoteDataSourceImpl
-import com.keepcoding.androidavanzado.data.remote.RemoteDataSource
-import com.keepcoding.androidavanzado.ui.model.Superhero
+import com.example.basicapp.Data.remote.RemoteDataSource
+import com.example.basicapp.UI.model.Superhero
+
 import javax.inject.Inject
 
 class RepositoryImpl @Inject constructor(

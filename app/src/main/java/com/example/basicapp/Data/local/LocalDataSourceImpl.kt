@@ -8,13 +8,7 @@ class LocalDataSourceImpl @Inject constructor(private val dao: SuperheroDAO): Lo
         return dao.getAll()
     }
 
-/*
-    override suspend fun insertHero(localSuperhero: LocalSuperhero){
-        dao.insertAllList(listOf(localSuperhero))
-    }*/
-
     override suspend fun insertHeroes(localSuperheros: List<LocalSuperhero>){
         dao.insertAllList(localSuperheros)
     }
-
 }

@@ -19,7 +19,7 @@ object LocalModule {
         val db = Room.databaseBuilder(
             context,
             SuperHeroDataBase.SuperheroDatabase::class.java, "superhero-db"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
         return db
     }
 

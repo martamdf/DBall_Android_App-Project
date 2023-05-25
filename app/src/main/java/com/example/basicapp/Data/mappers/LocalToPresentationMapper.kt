@@ -1,7 +1,8 @@
 package com.example.basicapp.Data.mappers
 
 import com.example.basicapp.Data.local.model.LocalSuperhero
-import com.keepcoding.androidavanzado.ui.model.Superhero
+import com.example.basicapp.UI.model.Superhero
+
 import javax.inject.Inject
 
 class LocalToPresentationMapper @Inject constructor() {
@@ -10,6 +11,6 @@ class LocalToPresentationMapper @Inject constructor() {
     }
 
     fun mapLocalSuperheroes(getHeroesResponse: LocalSuperhero): Superhero {
-        return Superhero(getHeroesResponse.id, getHeroesResponse.name)
+        return Superhero(getHeroesResponse.id, getHeroesResponse.name, getHeroesResponse.photo, getHeroesResponse.favorite)
     }
 }

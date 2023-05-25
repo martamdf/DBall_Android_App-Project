@@ -7,7 +7,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.basicapp.Data.local.model.LocalSuperhero
 
-
 @Dao
 interface SuperheroDAO {
     @Query("SELECT * FROM superheroes")

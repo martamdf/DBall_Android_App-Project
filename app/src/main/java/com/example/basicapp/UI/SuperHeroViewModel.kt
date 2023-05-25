@@ -5,9 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.basicapp.Data.Repository
-import com.example.basicapp.Data.RepositoryImpl
-import com.example.basicapp.Data.remote.GetHeroesResponse
-import com.keepcoding.androidavanzado.ui.model.Superhero
+import com.example.basicapp.UI.model.Superhero
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,7 +21,7 @@ class SuperHeroViewModel @Inject constructor(private val repository: Repository)
     fun getHeroes() {
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {
-                repository.getHeroes() // Thread.sleep(1000)
+                repository.getHeroes()
             }
             _heroes.value = result
         }

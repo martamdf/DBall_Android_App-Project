@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.example.basicapp.Data.local.model.LocalSuperhero
 
 class SuperHeroDataBase {
-    @Database(entities = [LocalSuperhero::class], version = 1)
+    @Database(entities = [LocalSuperhero::class], version = 3)
     abstract class SuperheroDatabase : RoomDatabase() {
         abstract fun superheroDao(): SuperheroDAO
     }

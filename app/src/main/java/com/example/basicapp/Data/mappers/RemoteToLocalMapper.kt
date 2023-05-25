@@ -10,6 +10,6 @@ class RemoteToLocalMapper @Inject constructor(){
     }
 
     fun mapGetHeroResponse(getHeroesResponse: GetHeroesResponse): LocalSuperhero {
-        return LocalSuperhero(getHeroesResponse.id, getHeroesResponse.name, false)
+        return LocalSuperhero(getHeroesResponse.id, getHeroesResponse.name, getHeroesResponse.photo, getHeroesResponse.favorite)
     }
 }

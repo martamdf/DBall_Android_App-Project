@@ -4,8 +4,8 @@ import com.example.basicapp.Data.Repository
 import com.example.basicapp.Data.RepositoryImpl
 import com.example.basicapp.Data.local.LocalDataSource
 import com.example.basicapp.Data.local.LocalDataSourceImpl
+import com.example.basicapp.Data.remote.RemoteDataSource
 import com.example.basicapp.Data.remote.RemoteDataSourceImpl
-import com.keepcoding.androidavanzado.data.remote.RemoteDataSource
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

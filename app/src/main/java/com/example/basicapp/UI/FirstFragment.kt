@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.basicapp.databinding.FragmentFirstBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,37 +26,31 @@ class FirstFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = SuperHeroAdapter()
-        binding.heroesList.adapter = adapter
-
-        viewModel.getHeroes()
-
-        binding.fab.setOnClickListener {
-
+        val adapter = SuperHeroAdapter() { superheroId: String ->
+            findNavController().navigate(
+                FirstFragmentDirections.actionFirstFragmentToSecondFragment(
+                    superheroId
+                )
+            )
         }
 
+        binding.heroesList.adapter = adapter
+        viewModel.getHeroes()
+
         viewModel.heroes.observe(viewLifecycleOwner){ heroes ->
-            Log.d("SUPERHEROES", heroes.toString())
-            val superHeroNames = heroes.map { hero ->
-                hero.name
-            }
             adapter.heroesList.clear()
-            adapter.heroesList.addAll(superHeroNames)
+            adapter.heroesList.addAll(heroes)
             adapter.notifyDataSetChanged()
         }
 
-
-
-        var token = (activity as SuperHeroesActivity).getPrefs("hola")
+        val token = (activity as SuperHeroesActivity).getPrefs("hola")
         Log.d("token first", token.toString())
     }
 

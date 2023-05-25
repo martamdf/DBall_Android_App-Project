@@ -1,7 +1,6 @@
 package com.example.basicapp.Data
 
 import com.example.basicapp.Data.remote.LoginData
-
 class LoginRepository {
     private val remoteDataSource = LoginData()
 
