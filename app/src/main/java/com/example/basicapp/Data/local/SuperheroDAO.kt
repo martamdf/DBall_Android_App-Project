@@ -5,12 +5,16 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.basicapp.Data.local.model.LocalSuperHeroLocation
 import com.example.basicapp.Data.local.model.LocalSuperhero
 
 @Dao
 interface SuperheroDAO {
     @Query("SELECT * FROM superheroes")
     suspend fun getAll(): List<LocalSuperhero>
+
+    @Query("SELECT * FROM superheroes WHERE id = :heroID")
+    suspend fun getHero(heroID: String): LocalSuperhero
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllVararg(vararg users: LocalSuperhero)
@@ -20,6 +24,12 @@ interface SuperheroDAO {
 
     @Delete
     suspend fun delete(user: LocalSuperhero)
+
+    // LOCATIONS:
+    @Query("SELECT * FROM locations WHERE id = :heroID")
+    suspend fun getLocation(heroID: String): List<LocalSuperHeroLocation>
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertLocationsList(heroLocations: List<LocalSuperHeroLocation>)
 }
 
 

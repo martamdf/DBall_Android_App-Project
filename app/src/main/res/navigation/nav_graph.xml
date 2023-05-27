@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.example.basicapp.UI.FirstFragment"
-        android:label="@string/first_fragment_label"
+        android:label="DragonBall Heroes"
         tools:layout="@layout/fragment_first">
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"

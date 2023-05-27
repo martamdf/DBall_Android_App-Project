@@ -1,6 +1,7 @@
 package com.example.basicapp.Data.remote
 
 import com.example.basicapp.Data.remote.request.GetHeroesRequestBody
+import com.example.basicapp.Data.remote.request.GetLocationsRequestBody
 import retrofit2.http.Body
 import retrofit2.http.Header
 import retrofit2.http.Headers
@@ -14,6 +15,10 @@ interface DragonBallApi {
     @POST("api/heros/all")
     @Headers("Authorization: Bearer $TOKEN")
     suspend fun getHeroes(@Body getHeroesRequestBody: GetHeroesRequestBody): List<GetHeroesResponse>
+
+    @POST("api/heros/locations")
+    @Headers("Authorization: Bearer $TOKEN")
+    suspend fun getLocations(@Body getLocationsRequestBody: GetLocationsRequestBody): List<GetHeroLocationsResponse>
 
     @POST("api/auth/login")
     suspend fun getToken(@Header("Authorization") credentials: String): String

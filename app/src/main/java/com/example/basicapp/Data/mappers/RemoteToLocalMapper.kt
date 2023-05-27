@@ -1,6 +1,8 @@
 package com.example.basicapp.Data.mappers
 
+import com.example.basicapp.Data.local.model.LocalSuperHeroLocation
 import com.example.basicapp.Data.local.model.LocalSuperhero
+import com.example.basicapp.Data.remote.GetHeroLocationsResponse
 import com.example.basicapp.Data.remote.GetHeroesResponse
 import javax.inject.Inject
 
@@ -9,7 +11,14 @@ class RemoteToLocalMapper @Inject constructor(){
         return getHeroesResponse.map { mapGetHeroResponse(it) }
     }
 
-    fun mapGetHeroResponse(getHeroesResponse: GetHeroesResponse): LocalSuperhero {
+    private fun mapGetHeroResponse(getHeroesResponse: GetHeroesResponse): LocalSuperhero {
         return LocalSuperhero(getHeroesResponse.id, getHeroesResponse.name, getHeroesResponse.photo, getHeroesResponse.favorite)
+    }
+
+    fun mapGetHeroLocationResponse(getHeroLocationsResponse: List<GetHeroLocationsResponse>): List<LocalSuperHeroLocation> {
+        return getHeroLocationsResponse.map { mapGetHeroLocationResponse(it) }
+    }
+    private fun mapGetHeroLocationResponse(getHeroLocationResponse: GetHeroLocationsResponse): LocalSuperHeroLocation {
+        return LocalSuperHeroLocation(getHeroLocationResponse.id, getHeroLocationResponse.latitud, getHeroLocationResponse.longitud, getHeroLocationResponse.hero.id, getHeroLocationResponse.dateShow)
     }
 }
