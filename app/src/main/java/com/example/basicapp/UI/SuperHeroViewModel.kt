@@ -27,4 +27,13 @@ class SuperHeroViewModel @Inject constructor(private val repository: Repository)
             _hero.value = result
         }
     }
+
+    fun setFav(hero: Superhero) {
+        viewModelScope.launch {
+            val result = withContext(Dispatchers.IO){
+                repository.setFav(hero)
+            }
+            _hero.value = result
+        }
+    }
 }

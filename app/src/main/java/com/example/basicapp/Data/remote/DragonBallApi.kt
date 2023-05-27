@@ -2,13 +2,14 @@ package com.example.basicapp.Data.remote
 
 import com.example.basicapp.Data.remote.request.GetHeroesRequestBody
 import com.example.basicapp.Data.remote.request.GetLocationsRequestBody
+import com.example.basicapp.Data.remote.request.SetFavoriteRequestBody
 import retrofit2.http.Body
 import retrofit2.http.Header
 import retrofit2.http.Headers
 import retrofit2.http.POST
 
 const val TOKEN =
-    "eyJraWQiOiJwcml2YXRlIiwiYWxnIjoiSFMyNTYiLCJ0eXAiOiJKV1QifQ.eyJpZGVudGlmeSI6IjdBQjhBQzRELUFEOEYtNEFDRS1BQTQ1LTIxRTg0QUU4QkJFNyIsImVtYWlsIjoiYmVqbEBrZWVwY29kaW5nLmVzIiwiZXhwaXJhdGlvbiI6NjQwOTIyMTEyMDB9.Dxxy91hTVz3RTF7w1YVTJ7O9g71odRcqgD00gspm30s"
+    "eyJraWQiOiJwcml2YXRlIiwiYWxnIjoiSFMyNTYiLCJ0eXAiOiJKV1QifQ.eyJpZGVudGlmeSI6IjVCQTQwNTdBLTA4QjItNDZGMy05NDVBLUMyMDFFRThGRDlEOCIsImVtYWlsIjoibWFydGEubWFxdWVkYW5vQGdtYWlsLmVzIiwiZXhwaXJhdGlvbiI6NjQwOTIyMTEyMDB9.yH034GHpaztqsKK3bz7KrbXr2jQ3kO63Kk0RikgB-gE"
 
 interface DragonBallApi {
 
@@ -19,6 +20,10 @@ interface DragonBallApi {
     @POST("api/heros/locations")
     @Headers("Authorization: Bearer $TOKEN")
     suspend fun getLocations(@Body getLocationsRequestBody: GetLocationsRequestBody): List<GetHeroLocationsResponse>
+
+    @POST("api/data/herolike")
+    @Headers("Authorization: Bearer $TOKEN")
+    suspend fun setFav(@Body setFavoriteRequestBody: SetFavoriteRequestBody)
 
     @POST("api/auth/login")
     suspend fun getToken(@Header("Authorization") credentials: String): String

@@ -65,7 +65,7 @@ class SecondFragment : Fragment(R.layout.fragment_second), OnMapReadyCallback {
             hero.locations?.let { loadLocationsInMap(it) }
 
             binding.isFav.setOnClickListener {
-                actualizaFav(hero)
+                setFav(hero)
             }
         }
 
@@ -80,7 +80,9 @@ class SecondFragment : Fragment(R.layout.fragment_second), OnMapReadyCallback {
         }*/
     }
 
-    private fun actualizaFav(hero: Superhero) {
+    private fun setFav(hero: Superhero) {
+
+        viewModel.setFav(hero)
        Toast.makeText(context, "actualiza", Toast.LENGTH_LONG).show()
     }
 

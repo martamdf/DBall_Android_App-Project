@@ -35,8 +35,7 @@ class SuperHeroAdapter (private val onClick: (String) -> (Unit)) :
 
         private val superheroName = itemView.findViewById<TextView>(R.id.textView2)
         private val superheroImage = itemView.findViewById<ImageView>(R.id.hero_image)
-        private val superheroFav = itemView.findViewById<ImageView>(R.id.is_fav)
-        private val superheroNotFav = itemView.findViewById<ImageView>(R.id.fav_heart_empty)
+        private val superheroFav = itemView.findViewById<ImageView>(R.id.fav_heart_empty)
 
         private lateinit var superhero: Superhero
 
@@ -44,18 +43,16 @@ class SuperHeroAdapter (private val onClick: (String) -> (Unit)) :
             itemView.setOnClickListener {
                 onClick(superhero.id)
             }
-            superheroFav.setOnClickListener {
-                superheroFav.setImageResource(R.drawable.heart_empty)
-            }
-            superheroNotFav.setOnClickListener {
-                superheroNotFav.setImageResource(R.drawable.heart_fill)
-            }
-
         }
 
         fun bind(superHero : Superhero) {
 
-            superheroFav.isVisible = superHero.favorite
+            if(superHero.favorite){
+                superheroFav.setImageResource(R.drawable.heart_fill_frame)
+            }
+            else{
+                superheroFav.setImageResource(R.drawable.heart_empty_frame)
+            }
             superheroName.text = superHero.name
             Picasso.get().load(superHero.photo).into(superheroImage)
             this.superhero = superHero

@@ -17,13 +17,18 @@ interface SuperheroDAO {
     suspend fun getHero(heroID: String): LocalSuperhero
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAllVararg(vararg users: LocalSuperhero)
+    suspend fun insert(vararg hero: LocalSuperhero)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertHero(vararg users: LocalSuperhero)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllList(users: List<LocalSuperhero>)
 
     @Delete
     suspend fun delete(user: LocalSuperhero)
+
+    @Query("DELETE FROM superheroes")
+    suspend fun deleteDataSuperheros()
 
     // LOCATIONS:
     @Query("SELECT * FROM locations WHERE id = :heroID")
