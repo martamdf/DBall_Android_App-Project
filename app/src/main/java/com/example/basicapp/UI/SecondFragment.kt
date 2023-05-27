@@ -13,10 +13,12 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
+import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.basicapp.R
+import com.example.basicapp.UI.model.Superhero
 import com.example.basicapp.UI.model.SuperheroLocations
 import com.example.basicapp.databinding.FragmentSecondBinding
 import com.example.basicapp.utils.viewBinding
@@ -29,7 +31,6 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import java.lang.Exception
 import java.util.Locale
 
 
@@ -40,7 +41,6 @@ class SecondFragment : Fragment(R.layout.fragment_second), OnMapReadyCallback {
     private val args: SecondFragmentArgs by navArgs()
 
     private val viewModel: SuperHeroViewModel by viewModels()
-
     private lateinit var map: GoogleMap
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,9 +55,20 @@ class SecondFragment : Fragment(R.layout.fragment_second), OnMapReadyCallback {
         viewModel.hero.observe(viewLifecycleOwner){ hero ->
             binding.textviewSecond.text = hero.name
             Picasso.get().load(hero.photo).into(binding.heroImageView)
+
+            if(hero.favorite){
+                binding.isFav.setImageResource(R.drawable.heart_fill_frame)
+            }else{
+                binding.isFav.setImageResource(R.drawable.heart_empty_frame)
+            }
+
             hero.locations?.let { loadLocationsInMap(it) }
 
+            binding.isFav.setOnClickListener {
+                actualizaFav(hero)
+            }
         }
+
 
 /*
         binding.button.setOnClickListener {
@@ -67,6 +78,10 @@ class SecondFragment : Fragment(R.layout.fragment_second), OnMapReadyCallback {
                 showLocation()
             }
         }*/
+    }
+
+    private fun actualizaFav(hero: Superhero) {
+       Toast.makeText(context, "actualiza", Toast.LENGTH_LONG).show()
     }
 
     @SuppressLint("MissingPermission")

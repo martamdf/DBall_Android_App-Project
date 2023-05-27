@@ -28,9 +28,18 @@ class RepositoryImpl @Inject constructor(
 
     override suspend fun getHero(heroID: String): Superhero {
 
-        val remoteLocations  = remoteDataSource.getLocations(heroID)
-        val superheroLocationsLocal = remoteToLocalMapper.mapGetHeroLocationResponse(remoteLocations)
-        val superheroLocationsUI = localToPresentationMapper.mapLocalSuperheroLocations(superheroLocationsLocal)
+        //val remoteLocations  = remoteDataSource.getLocations(heroID)
+        //val superheroLocationsLocal = remoteToLocalMapper.mapGetHeroLocationResponse(remoteLocations)
+
+        //localDataSource.insertLocations(superheroLocationsLocal)
+        if (localDataSource.getLocations(heroID).isEmpty()){
+            val remoteLocations  = remoteDataSource.getLocations(heroID)
+            localDataSource.insertLocations(remoteToLocalMapper.mapGetHeroLocationResponse(remoteLocations))
+        }
+
+        //val superheroLocationsUI = localToPresentationMapper.mapLocalSuperheroLocations(localDataSource.getLocations(heroID))
+        val superheroLocations = remoteToLocalMapper.mapGetHeroLocationResponse(remoteDataSource.getLocations(heroID))
+        val superheroLocationsUI = localToPresentationMapper.mapLocalSuperheroLocations(superheroLocations)
 
         val superhero = localToPresentationMapper.mapLocalSuperheroes(localDataSource.getHero(heroID))
         superhero.locations = superheroLocationsUI
