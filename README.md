@@ -32,4 +32,5 @@
   Un desastre y esto es lo que más me preocupa y frustra. 
   
   
-  Muchas gracias por tu paciencia y disculpa el desastre!
+ Creo que no me dejo ningún otro marrón (que yo sepa!! xD, alguno más sacarás)
+ Muchas gracias por tu paciencia y disculpa el desastre!
