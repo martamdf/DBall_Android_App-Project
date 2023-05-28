@@ -4,10 +4,9 @@
 
 
   ### Todas las llamadas a red se deberán hacer con Retrofit.
-  Hecho. En esta parte no ha habido grandes problemas. Pero se me han quedado un par de cosas en el tintero. Una de ellas, cuando hacemos el login, puede venir un String,
+  Hecho. Pero se me han quedado 3 cosas en el tintero. Una de ellas, cuando hacemos el login, puede venir un String,
   o un diccionario si existe un error. Lo gestioné como string desde el principio, y al intentar hacer la gestión de errores a última hora, pues no he tenido otro
-  remedio que meter un try/catch... La segunda es ver si se podría incluir de algún modo la parte del login en el NetworkModule. Como Moshi y alguna confi cambiaba, pues 
-  no me he atrevido a meter mano por estar ya justa de tiempo.
+  remedio que meter un try/catch... La segunda es ver si se podría incluir de algún modo la parte del login en el NetworkModule. Como Moshi y alguna confi cambiaba, pues  no me he atrevido a meter mano por estar ya justa de tiempo. Y la tercera y peor de todas: TOKEN hardcodeado. No he sido capaz de acceder al token (guardado en las shared preferences) desde DragonBallApi.
   
   ### Siempre que se pueda se deberán paralelizar las corrutinas para no introducir esperas innecesarias.
   Hecho. Pero por ejemplo en la vista de detalle, creo que debería haber separado la request de las localizaciones para evitar que se retrase la muestra del detalle
