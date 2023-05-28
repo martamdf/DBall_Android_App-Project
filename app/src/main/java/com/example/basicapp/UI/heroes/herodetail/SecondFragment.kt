@@ -1,4 +1,4 @@
-package com.example.basicapp.UI
+package com.example.basicapp.UI.heroes.herodetail
 
 //import android.Manifest
 //import android.Manifest
@@ -13,13 +13,12 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
-import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.basicapp.R
-import com.example.basicapp.UI.model.Superhero
-import com.example.basicapp.UI.model.SuperheroLocations
+import com.example.basicapp.UI.heroes.model.Superhero
+import com.example.basicapp.UI.heroes.model.SuperheroLocations
 import com.example.basicapp.databinding.FragmentSecondBinding
 import com.example.basicapp.utils.viewBinding
 import com.google.android.gms.location.LocationServices
@@ -69,21 +68,10 @@ class SecondFragment : Fragment(R.layout.fragment_second), OnMapReadyCallback {
             }
         }
 
-
-/*
-        binding.button.setOnClickListener {
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(40.0, -3.6), 20.0F))
-
-            if (checkPermission()){
-                showLocation()
-            }
-        }*/
     }
 
     private fun setFav(hero: Superhero) {
-
         viewModel.setFav(hero)
-       Toast.makeText(context, "actualiza", Toast.LENGTH_LONG).show()
     }
 
     @SuppressLint("MissingPermission")

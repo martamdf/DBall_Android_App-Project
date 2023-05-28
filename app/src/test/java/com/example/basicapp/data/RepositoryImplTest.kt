@@ -29,34 +29,22 @@ class RepositoryImplTest {
 
     @Before
     fun setup() {
-        localDataSource = FakeLocalDataSource()
+        localDataSource = mockk()//FakeLocalDataSource()
         remoteDataSource = mockk()
-
         remoteToLocalMapper = RemoteToLocalMapper()
         localToPresentationMapper = LocalToPresentationMapper()
+        presentationToLocalMapper = PresentationToLocalMapper()
         repositoryImpl =
             RepositoryImpl(localDataSource, remoteDataSource, localToPresentationMapper, remoteToLocalMapper, presentationToLocalMapper)
     }
 
     // ESTE TEST NO VA BIEN PORQUE TENEMOS QUE CAMBIAR EL MOCK
     @Test
-    fun `WHEN getHeros EXPECT local empty return network`() = runTest {
+    fun `WHEN getHeroes EXPECT local empty return network`() = runTest {
         // GIVEN
         coEvery { localDataSource.getHeroes() } returns generateLocalSuperhero(16)
         coEvery { remoteDataSource.getHeroes() } returns generateGetHeroesResponse(16)
         coEvery { localDataSource.insertHeroes(any()) } just Runs
-
-        // WHEN
-        val actual = repositoryImpl.getHeroes()
-
-        // THEN
-        assert(actual.isNotEmpty())
-    }
-
-    @Test
-    fun `(FAKE) WHEN getHeroes EXPECT local empty return network`() = runTest {
-        // GIVEN
-        coEvery { remoteDataSource.getHeroes() } returns generateGetHeroesResponse(16)
 
         // WHEN
         val actual = repositoryImpl.getHeroes()

@@ -1,16 +1,15 @@
-package com.example.basicapp.UI
+package com.example.basicapp.UI.heroes.heroeslist
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.basicapp.R
-import com.example.basicapp.UI.model.Superhero
+import com.example.basicapp.UI.heroes.model.Superhero
 import com.squareup.picasso.Picasso
 
 class SuperHeroAdapter (private val onClick: (String) -> (Unit)) :
@@ -47,12 +46,14 @@ class SuperHeroAdapter (private val onClick: (String) -> (Unit)) :
 
         fun bind(superHero : Superhero) {
 
+            // TODO: Add also in this view the fav functionality
             if(superHero.favorite){
                 superheroFav.setImageResource(R.drawable.heart_fill_frame)
             }
             else{
                 superheroFav.setImageResource(R.drawable.heart_empty_frame)
             }
+
             superheroName.text = superHero.name
             Picasso.get().load(superHero.photo).into(superheroImage)
             this.superhero = superHero

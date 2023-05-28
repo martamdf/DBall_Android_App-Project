@@ -3,6 +3,8 @@ package com.example.basicapp.data.local.fakes
 import com.example.basicapp.Data.local.LocalDataSource
 import com.example.basicapp.Data.local.model.LocalSuperHeroLocation
 import com.example.basicapp.Data.local.model.LocalSuperhero
+import com.example.basicapp.utils.generateGetHeroesResponse
+import com.example.basicapp.utils.generateOneLocalSuperhero
 import javax.inject.Inject
 
 class FakeLocalDataSource @Inject constructor() : LocalDataSource {
@@ -21,11 +23,11 @@ class FakeLocalDataSource @Inject constructor() : LocalDataSource {
     }
 
     override suspend fun insertHero(localSuperhero: LocalSuperhero) {
-        TODO("Not yet implemented")
+
     }
 
     override suspend fun getHero(heroID: String): LocalSuperhero {
-        TODO("Not yet implemented")
+        return generateOneLocalSuperhero()
     }
 
     override suspend fun getLocations(heroID: String): List<LocalSuperHeroLocation> {

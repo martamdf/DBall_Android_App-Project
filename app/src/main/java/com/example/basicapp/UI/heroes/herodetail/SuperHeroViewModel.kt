@@ -1,12 +1,11 @@
-package com.example.basicapp.UI
+package com.example.basicapp.UI.heroes.herodetail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.basicapp.Data.Repository
-import com.example.basicapp.UI.model.Superhero
-import com.example.basicapp.UI.model.SuperheroLocations
+import com.example.basicapp.UI.heroes.model.Superhero
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

@@ -9,8 +9,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.lifecycleScope
-import com.example.basicapp.UI.SuperHeroesActivity
+import com.example.basicapp.UI.heroes.SuperHeroesActivity
 import com.example.basicapp.databinding.ActivityLoginBinding
+import com.example.basicapp.utils.Constants
 import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
@@ -21,6 +22,8 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
+
+        Constants.instance(applicationContext);
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -34,6 +37,7 @@ class LoginActivity : AppCompatActivity() {
                 when (it){
                     is UiState.OnTokenReceived -> saveToken(it.token)
                     is UiState.Idle -> Log.d("idle", viewModel.uiState.value.toString())
+                    is UiState.Error -> showError(it.message)
                 }
             }
         }
@@ -56,10 +60,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun saveToken(value: String) {
-        val prefs = getSharedPreferences("auth", Context.MODE_PRIVATE)
+
+        Constants.instance().storeValueString("token", value);
+/*        val prefs = getSharedPreferences("auth", Context.MODE_PRIVATE)
         val editor = prefs.edit()
         editor.putString("token", value)
-        editor.apply()
+        editor.apply()*/
         launchActivity()
     }
 }

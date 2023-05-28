@@ -30,7 +30,7 @@
         </activity>
 
         <activity
-            android:name=".UI.SuperHeroesActivity"
+            android:name=".UI.heroes.SuperHeroesActivity"
             android:exported="true"
             android:theme="@style/Theme.BasicApp">
         </activity>

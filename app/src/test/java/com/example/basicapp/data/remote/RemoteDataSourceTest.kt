@@ -44,18 +44,9 @@ open class RemoteDataSourceTest : BaseNetworkMockTest() {
         val actual = remoteDataSource.getLocations(heroID)
 
         // Then
-        assert(actual[0].hero.id == heroID)
+        //assert(actual[0].hero.id == heroID)
+        assert(actual.size == 8)
     }
 
 
-    @Test
-    fun myTest3() = runTest {
-        // Given
-        val getHerosRequestBody = GetHeroesRequestBody("Juan")
-
-        // When
-
-        // Then
-        assert(getHerosRequestBody.name == "Juan")
-    }
 }

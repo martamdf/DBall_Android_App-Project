@@ -1,9 +1,7 @@
 package com.example.basicapp.Data.mappers
 
-import com.example.basicapp.Data.local.model.LocalSuperHeroLocation
 import com.example.basicapp.Data.local.model.LocalSuperhero
-import com.example.basicapp.UI.model.Superhero
-import com.example.basicapp.UI.model.SuperheroLocations
+import com.example.basicapp.UI.heroes.model.Superhero
 
 import javax.inject.Inject
 

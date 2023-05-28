@@ -1,4 +1,4 @@
-package com.example.basicapp.UI
+package com.example.basicapp.UI.heroes
 
 import android.content.Context
 import android.os.Bundle

@@ -35,5 +35,4 @@ open class BaseNetworkMockTest {
     fun tearDown() {
         mockWebServer.shutdown()
     }
-
 }

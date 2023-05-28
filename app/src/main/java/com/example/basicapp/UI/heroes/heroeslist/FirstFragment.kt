@@ -1,4 +1,4 @@
-package com.example.basicapp.UI
+package com.example.basicapp.UI.heroes.heroeslist
 
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.basicapp.UI.heroes.SuperHeroesActivity
+import com.example.basicapp.UI.heroes.model.Superhero
 import com.example.basicapp.databinding.FragmentFirstBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -53,6 +55,7 @@ class FirstFragment : Fragment() {
         val token = (activity as SuperHeroesActivity).getPrefs("hola")
         Log.d("token first", token.toString())
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
