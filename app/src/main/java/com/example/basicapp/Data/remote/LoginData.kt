@@ -13,7 +13,6 @@ class LoginData {
     private val okHttpClient = OkHttpClient.Builder().addInterceptor(HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT).apply{
         level = HttpLoggingInterceptor.Level.BODY
     }).build()
-
     private val retrofit = Retrofit.Builder()
         .baseUrl("https://dragonball.keepcoding.education/")
         .client(okHttpClient)
