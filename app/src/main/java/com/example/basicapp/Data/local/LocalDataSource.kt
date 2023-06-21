@@ -8,7 +8,7 @@ interface LocalDataSource {
     suspend fun insertHeroes(localSuperheros: List<LocalSuperhero>)
     suspend fun insertHero(hero: LocalSuperhero)
     suspend fun getHero(heroID: String): LocalSuperhero
-    suspend fun getLocations(heroID: String): List<LocalSuperHeroLocation>
-    suspend fun insertLocations(localHeroLocations: List<LocalSuperHeroLocation>)
+    //suspend fun getLocations(heroID: String): List<LocalSuperHeroLocation>
+    //suspend fun insertLocations(localHeroLocations: List<LocalSuperHeroLocation>)
     suspend fun deleteData()
 }

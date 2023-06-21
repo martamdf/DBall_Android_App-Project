@@ -15,7 +15,7 @@ class RepositoryImpl @Inject constructor(
     private val localToPresentationMapper: LocalToPresentationMapper,
     private val remoteToLocalMapper: RemoteToLocalMapper,
     private val presentationToLocalMapper: PresentationToLocalMapper
-): Repository{
+): Repository {
 
     override suspend fun getHeroes(): List<Superhero> {
         // TODO: Find the way to, after a while (i.e. one day), do the remote request again,
@@ -28,13 +28,6 @@ class RepositoryImpl @Inject constructor(
     }
 
     override suspend fun getHero(heroID: String): Superhero {
-
-
-        if (localDataSource.getLocations(heroID).isEmpty()){
-            val remoteLocations  = remoteDataSource.getLocations(heroID)
-            localDataSource.insertLocations(remoteToLocalMapper.mapGetHeroLocationResponse(remoteLocations))
-        }
-
         val superheroLocations = remoteToLocalMapper.mapGetHeroLocationResponse(remoteDataSource.getLocations(heroID))
         val superheroLocationsUI = localToPresentationMapper.mapLocalSuperheroLocations(superheroLocations)
 
@@ -48,5 +41,9 @@ class RepositoryImpl @Inject constructor(
         localDataSource.insertHero(presentationToLocalMapper.mapPresentationSuperheroes(hero))
         remoteDataSource.setFav(hero.id)
         return hero
+    }
+
+    override suspend fun login(user: String, password: String): String {
+        return remoteDataSource.login(user, password)
     }
 }

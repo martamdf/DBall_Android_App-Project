@@ -9,4 +9,6 @@ interface RemoteDataSource {
     suspend fun getLocations(heroID: String): List<GetHeroLocationsResponse>
 
     suspend fun setFav(heroID: String)
+
+    suspend fun login(user: String, password: String): String
 }

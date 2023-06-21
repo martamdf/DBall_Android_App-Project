@@ -17,7 +17,7 @@ class FakeRemoteDataSource: RemoteDataSource {
         return generateGetHeroesLocationsResponse(3)
     }
 
-    override suspend fun setFav(heroID: String): Int {
+    override suspend fun setFav(heroID: String) {
         return generateSetFavResponse()
     }
 }

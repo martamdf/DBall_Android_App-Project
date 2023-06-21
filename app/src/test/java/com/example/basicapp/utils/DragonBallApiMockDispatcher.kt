@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit
 
 class DragonBallApiMockDispatcher : Dispatcher() {
     override fun dispatch(request: RecordedRequest): MockResponse {
+        var path_o = request.path+"hola"
         return when (request.path) {
             "/api/heros/all" -> {
                 MockResponse()

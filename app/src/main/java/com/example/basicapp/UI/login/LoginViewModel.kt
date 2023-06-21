@@ -1,19 +1,18 @@
 package com.example.basicapp.UI.login
 
-import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.basicapp.Data.LoginRepositoryImpl
+import com.example.basicapp.Data.Repository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class LoginViewModel : ViewModel(){
-
-    private val repository = LoginRepositoryImpl()
+@HiltViewModel
+class LoginViewModel @Inject constructor(private val repository: Repository): ViewModel(){
 
     private val _uiState = MutableStateFlow<UiState>(UiState.Idle)
     val uiState : StateFlow<UiState> = _uiState
@@ -21,9 +20,8 @@ class LoginViewModel : ViewModel(){
     fun loginTest(email: String, pass:String){
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {
-                repository.getToken(email, pass) // Thread.sleep(1000)
+                repository.login(email, pass)
             }
-
             if(result != "Error"){
                 _uiState.value = UiState.OnTokenReceived(result)
             }

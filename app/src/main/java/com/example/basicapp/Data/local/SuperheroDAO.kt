@@ -31,10 +31,10 @@ interface SuperheroDAO {
     suspend fun deleteDataSuperheros()
 
     // LOCATIONS:
-    @Query("SELECT * FROM locations WHERE id = :heroID")
-    suspend fun getLocation(heroID: String): List<LocalSuperHeroLocation>
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertLocationsList(heroLocations: List<LocalSuperHeroLocation>)
+/*    @Query("SELECT * FROM locations WHERE id = :heroID")
+    suspend fun getLocation(heroID: String): List<LocalSuperHeroLocation>*/
+//    @Insert(onConflict = OnConflictStrategy.REPLACE)
+//    suspend fun insertLocationsList(heroLocations: List<LocalSuperHeroLocation>)
 }
 
 

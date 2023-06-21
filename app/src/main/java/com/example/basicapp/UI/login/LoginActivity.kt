@@ -12,8 +12,11 @@ import androidx.lifecycle.lifecycleScope
 import com.example.basicapp.UI.heroes.SuperHeroesActivity
 import com.example.basicapp.databinding.ActivityLoginBinding
 import com.example.basicapp.utils.Constants
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
@@ -35,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
         lifecycleScope.launch {
             viewModel.uiState.collect{
                 when (it){
-                    is UiState.OnTokenReceived -> saveToken(it.token)
+                    is UiState.OnTokenReceived -> launchActivity()
                     is UiState.Idle -> Log.d("idle", viewModel.uiState.value.toString())
                     is UiState.Error -> showError(it.message)
                 }
@@ -50,23 +53,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun launchActivity(){
-
         val intent = Intent(this, SuperHeroesActivity::class.java)
         startActivity(intent)
     }
 
     private fun showError(error: String) {
         Toast.makeText(this, "$error", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun saveToken(value: String) {
-
-        Constants.instance().storeValueString("token", value);
-/*        val prefs = getSharedPreferences("auth", Context.MODE_PRIVATE)
-        val editor = prefs.edit()
-        editor.putString("token", value)
-        editor.apply()*/
-        launchActivity()
     }
 }
 

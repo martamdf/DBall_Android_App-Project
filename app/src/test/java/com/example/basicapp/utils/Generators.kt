@@ -12,7 +12,6 @@ fun generateHeroes(size: Int): List<Superhero> {
     return (0 until size).map { Superhero("ID $it", "Name $it", "photo", false, locations) }
 }
 
-
 fun generateGetHeroesResponse(size: Int): List<GetHeroesResponse> {
     return (0 until size).map { GetHeroesResponse("ID $it", "Name $it", "Description $it", "Photo $it", false) }
 }
@@ -24,6 +23,11 @@ fun generateOneLocalSuperhero(): LocalSuperhero {
     return LocalSuperhero("ID", "Name", "photo", false)
 }
 
+fun generateOnePresentationSuperhero(): Superhero {
+    val locations : List<SuperheroLocations> = emptyList()
+    return Superhero("Paco Perez", "Name", "photo", false, locations)
+}
+
 fun generateGetHeroesLocationsResponse(size: Int): List<GetHeroLocationsResponse> {
     val heroID = GetHeroIdLocation("idf")
     return (0 until size).map { GetHeroLocationsResponse("id $it", "longitud $it", "latitud $it", heroID, "")}
@@ -32,8 +36,7 @@ fun generateOneSuperhero(): Superhero {
     return Superhero("id", "Name", "photo", false, emptyList())
 }
 
-fun generateSetFavResponse(): Int {
-    return 201
+fun generateSetFavResponse() {
+    return Unit
 }
-
 //generateSetFavResponse

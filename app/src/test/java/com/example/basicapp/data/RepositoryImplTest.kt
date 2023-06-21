@@ -1,13 +1,16 @@
 package com.example.basicapp.data
 
 import com.example.basicapp.Data.RepositoryImpl
+import com.example.basicapp.Data.local.LocalDataSourceImpl
 import com.example.basicapp.Data.mappers.LocalToPresentationMapper
 import com.example.basicapp.Data.mappers.PresentationToLocalMapper
 import com.example.basicapp.Data.mappers.RemoteToLocalMapper
 import com.example.basicapp.Data.remote.RemoteDataSourceImpl
-import com.example.basicapp.data.local.fakes.FakeLocalDataSource
+import com.example.basicapp.utils.generateGetHeroesLocationsResponse
 import com.example.basicapp.utils.generateGetHeroesResponse
 import com.example.basicapp.utils.generateLocalSuperhero
+import com.example.basicapp.utils.generateOneLocalSuperhero
+import com.example.basicapp.utils.generateOnePresentationSuperhero
 import io.mockk.Runs
 import io.mockk.coEvery
 import io.mockk.just
@@ -21,7 +24,7 @@ class RepositoryImplTest {
     private lateinit var repositoryImpl: RepositoryImpl
 
     // Dependencies
-    private lateinit var localDataSource: FakeLocalDataSource
+    private lateinit var localDataSource: LocalDataSourceImpl
     private lateinit var remoteDataSource: RemoteDataSourceImpl
     private lateinit var remoteToLocalMapper: RemoteToLocalMapper
     private lateinit var localToPresentationMapper: LocalToPresentationMapper
@@ -29,7 +32,7 @@ class RepositoryImplTest {
 
     @Before
     fun setup() {
-        localDataSource = mockk()//FakeLocalDataSource()
+        localDataSource = mockk()
         remoteDataSource = mockk()
         remoteToLocalMapper = RemoteToLocalMapper()
         localToPresentationMapper = LocalToPresentationMapper()
@@ -54,11 +57,45 @@ class RepositoryImplTest {
     }
 
     @Test
-    fun `WHEN getHeros EXPECT successful network response first call and successful local response next call`() {
+    fun `WHEN getHero EXPECT returns a hero with a list of locations`() = runTest {
         // GIVEN
+        coEvery { localDataSource.getHero("id") } returns generateOneLocalSuperhero()
+        coEvery { remoteDataSource.getLocations("id") } returns generateGetHeroesLocationsResponse(2)
 
         // WHEN
+        val actual = repositoryImpl.getHero("id")
 
         // THEN
+        assert(actual.locations?.size ==2)
+    }
+
+    @Test
+    fun `WHEN `() = runTest {
+        // GIVEN
+        val hero = generateOnePresentationSuperhero() // fav = false
+        coEvery { localDataSource.insertHero(any()) } just Runs
+        coEvery { remoteDataSource.setFav(hero.id) } just Runs
+
+        // WHEN
+        val actual = repositoryImpl.setFav(hero) // cambia a true
+
+        // THEN
+        assert(actual.favorite)
+    }
+
+    @Test
+    fun WHEN () = runTest {
+        // GIVEN
+        val heroInicial = generateOnePresentationSuperhero() // fav = false
+
+        coEvery { localDataSource.insertHero(any()) } just Runs
+        coEvery { remoteDataSource.setFav("Paco Perez") } just Runs
+
+        // WHEN
+        val actual = repositoryImpl.setFav(heroInicial) // cambia a true
+
+
+        // THEN
+        assert(actual.favorite)
     }
 }
