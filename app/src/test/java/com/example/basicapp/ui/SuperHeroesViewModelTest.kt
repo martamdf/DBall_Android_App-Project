@@ -1,8 +1,8 @@
 package com.example.basicapp.ui
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.basicapp.Data.Repository
-import com.example.basicapp.UI.heroes.heroeslist.SuperHeroesViewModel
+import com.example.basicapp.data.Repository
+import com.example.basicapp.ui.heroes.heroeslist.SuperHeroesViewModel
 import com.example.basicapp.utils.generateHeroes
 import com.example.basicapp.utils.getOrAwaitValue
 import io.mockk.coEvery

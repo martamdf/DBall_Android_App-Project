@@ -2,11 +2,11 @@ package com.example.basicapp.ui
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth
-import com.example.basicapp.Data.Repository
-import com.example.basicapp.Data.RepositoryImpl
-import com.example.basicapp.Data.local.LocalDataSource
-import com.example.basicapp.Data.remote.RemoteDataSource
-import com.example.basicapp.UI.heroes.heroeslist.SuperHeroesViewModel
+import com.example.basicapp.data.Repository
+import com.example.basicapp.data.RepositoryImpl
+import com.example.basicapp.data.local.LocalDataSource
+import com.example.basicapp.data.remote.RemoteDataSource
+import com.example.basicapp.ui.heroes.heroeslist.SuperHeroesViewModel
 import com.example.basicapp.data.local.fakes.FakeLocalDataSource
 import com.example.basicapp.data.remote.fakes.FakeRemoteDataSource
 import com.example.basicapp.di.RepositoryModule

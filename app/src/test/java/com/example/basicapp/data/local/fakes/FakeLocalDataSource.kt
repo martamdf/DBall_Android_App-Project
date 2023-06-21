@@ -1,10 +1,8 @@
 package com.example.basicapp.data.local.fakes
 
 import android.util.Log
-import com.example.basicapp.Data.local.LocalDataSource
-import com.example.basicapp.Data.local.model.LocalSuperHeroLocation
-import com.example.basicapp.Data.local.model.LocalSuperhero
-import com.example.basicapp.utils.generateGetHeroesResponse
+import com.example.basicapp.data.local.LocalDataSource
+import com.example.basicapp.data.local.model.LocalSuperhero
 import com.example.basicapp.utils.generateOneLocalSuperhero
 import javax.inject.Inject
 

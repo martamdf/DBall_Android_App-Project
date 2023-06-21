@@ -1,11 +1,11 @@
 package com.example.basicapp.di
 
-import com.example.basicapp.Data.Repository
-import com.example.basicapp.Data.RepositoryImpl
-import com.example.basicapp.Data.local.LocalDataSource
-import com.example.basicapp.Data.local.LocalDataSourceImpl
-import com.example.basicapp.Data.remote.RemoteDataSource
-import com.example.basicapp.Data.remote.RemoteDataSourceImpl
+import com.example.basicapp.data.Repository
+import com.example.basicapp.data.RepositoryImpl
+import com.example.basicapp.data.local.LocalDataSource
+import com.example.basicapp.data.local.LocalDataSourceImpl
+import com.example.basicapp.data.remote.RemoteDataSource
+import com.example.basicapp.data.remote.RemoteDataSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

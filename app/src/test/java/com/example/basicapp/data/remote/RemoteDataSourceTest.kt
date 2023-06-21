@@ -1,7 +1,5 @@
 package com.example.basicapp.data.remote
 
-import com.example.basicapp.Data.remote.RemoteDataSourceImpl
-import com.example.basicapp.Data.remote.request.GetHeroesRequestBody
 import com.example.basicapp.utils.BaseNetworkMockTest
 import kotlinx.coroutines.test.runTest
 import org.junit.Test

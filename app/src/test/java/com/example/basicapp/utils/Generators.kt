@@ -1,11 +1,11 @@
 package com.example.basicapp.utils
 
-import com.example.basicapp.Data.local.model.LocalSuperhero
-import com.example.basicapp.Data.remote.GetHeroIdLocation
-import com.example.basicapp.Data.remote.GetHeroLocationsResponse
-import com.example.basicapp.Data.remote.response.GetHeroesResponse
-import com.example.basicapp.UI.heroes.model.Superhero
-import com.example.basicapp.UI.heroes.model.SuperheroLocations
+import com.example.basicapp.data.local.model.LocalSuperhero
+import com.example.basicapp.data.remote.GetHeroIdLocation
+import com.example.basicapp.data.remote.GetHeroLocationsResponse
+import com.example.basicapp.data.remote.response.GetHeroesResponse
+import com.example.basicapp.ui.heroes.model.Superhero
+import com.example.basicapp.ui.heroes.model.SuperheroLocations
 
 fun generateHeroes(size: Int): List<Superhero> {
     val locations : List<SuperheroLocations> = emptyList()

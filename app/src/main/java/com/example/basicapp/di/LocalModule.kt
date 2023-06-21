@@ -2,8 +2,8 @@ package com.example.basicapp.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.basicapp.Data.local.SuperHeroDataBase
-import com.example.basicapp.Data.local.SuperheroDAO
+import com.example.basicapp.data.local.SuperHeroDataBase
+import com.example.basicapp.data.local.SuperheroDAO
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

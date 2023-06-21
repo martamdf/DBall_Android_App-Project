@@ -6,7 +6,7 @@
     android:layout_margin="16dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".UI.heroes.heroeslist.FirstFragment">
+    tools:context=".ui.heroes.heroeslist.FirstFragment">
 
     <ImageView
         android:id="@+id/hero_image"

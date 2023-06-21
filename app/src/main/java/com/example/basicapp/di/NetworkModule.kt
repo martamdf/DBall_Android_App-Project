@@ -1,6 +1,6 @@
 package com.example.basicapp.di
 
-import com.example.basicapp.Data.remote.DragonBallApi
+import com.example.basicapp.data.remote.DragonBallApi
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module

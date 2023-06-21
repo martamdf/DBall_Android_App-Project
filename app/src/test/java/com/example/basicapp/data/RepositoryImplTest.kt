@@ -1,11 +1,10 @@
 package com.example.basicapp.data
 
-import com.example.basicapp.Data.RepositoryImpl
-import com.example.basicapp.Data.local.LocalDataSourceImpl
-import com.example.basicapp.Data.mappers.LocalToPresentationMapper
-import com.example.basicapp.Data.mappers.PresentationToLocalMapper
-import com.example.basicapp.Data.mappers.RemoteToLocalMapper
-import com.example.basicapp.Data.remote.RemoteDataSourceImpl
+import com.example.basicapp.data.local.LocalDataSourceImpl
+import com.example.basicapp.data.mappers.LocalToPresentationMapper
+import com.example.basicapp.data.mappers.PresentationToLocalMapper
+import com.example.basicapp.data.mappers.RemoteToLocalMapper
+import com.example.basicapp.data.remote.RemoteDataSourceImpl
 import com.example.basicapp.utils.generateGetHeroesLocationsResponse
 import com.example.basicapp.utils.generateGetHeroesResponse
 import com.example.basicapp.utils.generateLocalSuperhero
