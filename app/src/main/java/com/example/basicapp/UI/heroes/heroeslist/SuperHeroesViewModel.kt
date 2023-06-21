@@ -17,7 +17,6 @@ class SuperHeroesViewModel @Inject constructor(private val repository: Repositor
 
     private val _heroes = MutableLiveData<List<Superhero>>()
     val heroes: LiveData<List<Superhero>> get() = _heroes
-
     fun getHeroes() {
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {

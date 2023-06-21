@@ -1,6 +1,5 @@
 package com.example.basicapp.UI.login
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -11,9 +10,7 @@ import androidx.core.view.WindowCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.basicapp.UI.heroes.SuperHeroesActivity
 import com.example.basicapp.databinding.ActivityLoginBinding
-import com.example.basicapp.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -25,8 +22,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
-
-        Constants.instance(applicationContext);
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
