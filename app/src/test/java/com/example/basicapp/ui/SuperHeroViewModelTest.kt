@@ -8,6 +8,7 @@ import com.example.basicapp.utils.getOrAwaitValue
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
@@ -24,10 +25,9 @@ class SuperHeroViewModelTest {
     // UUT o SUT
     private lateinit var viewModel: SuperHeroViewModel
 
-    // Mocks
     private lateinit var repository: Repository
-    // Fakes
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     @Before
     fun setUp() {
         Dispatchers.setMain(UnconfinedTestDispatcher())
@@ -38,23 +38,20 @@ class SuperHeroViewModelTest {
     @Test
     fun `WHEN getHero EXPECT successful response`()  {
         // GIVEN
-
         val id = "testingID"
         coEvery { repository.getHero(id) } returns generateOneSuperhero()
 
         // WHEN
-        val actual = viewModel.getHero(id)
+        viewModel.getHero(id)
         val actualLiveData = viewModel.hero.getOrAwaitValue()
 
         // THEN
         assert(actualLiveData.locations?.isEmpty() ?: false)
-
     }
 
-
+    @OptIn(ExperimentalCoroutinesApi::class)
     @After
     fun tearDown() {
         Dispatchers.resetMain()
     }
-
 }

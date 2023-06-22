@@ -28,7 +28,6 @@ import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
 
-
 @AndroidEntryPoint
 class HeroDetailFragment : Fragment(R.layout.fragment_hero_detail), OnMapReadyCallback {
 
@@ -47,42 +46,29 @@ class HeroDetailFragment : Fragment(R.layout.fragment_hero_detail), OnMapReadyCa
 
         viewModel.getHero(args.superheroId)
 
-        viewModel.hero.observe(viewLifecycleOwner){ hero ->
-            binding.textviewSecond.text = hero.name
-            Picasso.get().load(hero.photo).into(binding.heroImageView)
+        with(binding){
+            viewModel.hero.observe(viewLifecycleOwner){ hero ->
+                textviewSecond.text = hero.name
+                Picasso.get().load(hero.photo).into(heroImageView)
 
-            if(hero.favorite){
-                binding.isFav.setImageResource(R.drawable.heart_fill_frame)
-            }else{
-                binding.isFav.setImageResource(R.drawable.heart_empty_frame)
-            }
+                if(hero.favorite){
+                    isFav.setImageResource(R.drawable.heart_fill_frame)
+                }else{
+                    isFav.setImageResource(R.drawable.heart_empty_frame)
+                }
 
-            hero.locations?.let { loadLocationsInMap(it) }
+                hero.locations?.let { loadLocationsInMap(it) }
 
-            binding.isFav.setOnClickListener {
-                setFav(hero)
+                isFav.setOnClickListener {
+                    setFav(hero)
+                }
             }
         }
-
     }
 
     private fun setFav(hero: Superhero) {
         viewModel.setFav(hero)
     }
-
-   /* @SuppressLint("MissingPermission")
-    private fun showLocation() {
-        val fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
-
-        fusedLocationClient.lastLocation.addOnCompleteListener{
-            if (it.isSuccessful){
-                val location = it.result
-                val marker = MarkerOptions().position(LatLng(location.latitude, location.longitude))
-                map.addMarker(marker)
-            }
-        }
-    }*/
-
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -110,13 +96,11 @@ class HeroDetailFragment : Fragment(R.layout.fragment_hero_detail), OnMapReadyCa
                         ).show()
                     }
                 }
-
             permissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
         }
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-
         map = googleMap
     }
 
@@ -128,8 +112,8 @@ class HeroDetailFragment : Fragment(R.layout.fragment_hero_detail), OnMapReadyCa
                 try {
                     val gcd = Geocoder(requireContext(), Locale.getDefault())
                     val addresses: List<Address>? = gcd.getFromLocation(location.latitude.toDouble(), location.longitude.toDouble(), 1)
-                    if (addresses!!.size > 0) {
-                        countryName += addresses!![0].locality + ", " + addresses!![0].getCountryName()
+                    if (addresses!!.isNotEmpty()) {
+                        countryName += addresses[0].locality + ", " + addresses[0].countryName
                     }
                 }catch (e: Exception){
                     countryName = ""

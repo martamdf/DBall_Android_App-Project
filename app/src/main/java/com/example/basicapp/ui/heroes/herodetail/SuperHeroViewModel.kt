@@ -17,7 +17,6 @@ class SuperHeroViewModel @Inject constructor(private val repository: Repository)
 
     private val _hero = MutableLiveData<Superhero>()
     val hero: LiveData<Superhero> get() = _hero
-
     fun getHero(heroID: String) {
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {
@@ -26,7 +25,6 @@ class SuperHeroViewModel @Inject constructor(private val repository: Repository)
             _hero.value = result
         }
     }
-
     fun setFav(hero: Superhero) {
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO){

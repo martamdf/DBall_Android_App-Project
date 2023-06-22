@@ -29,14 +29,6 @@ class FakeLocalDataSource @Inject constructor() : LocalDataSource {
         return generateOneLocalSuperhero()
     }
 
-//    override suspend fun getLocations(heroID: String): List<LocalSuperHeroLocation> {
-//        TODO("Not yet implemented")
-//    }
-//
-//    override suspend fun insertLocations(localHeroLocations: List<LocalSuperHeroLocation>) {
-//        TODO("Not yet implemented")
-//    }
-
     override suspend fun deleteData() {
         TODO("Not yet implemented")
     }

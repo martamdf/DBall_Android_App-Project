@@ -45,7 +45,6 @@ class SuperHeroAdapter (private val onClick: (String) -> (Unit)) :
         }
 
         fun bind(superHero : Superhero) {
-
             // TODO: Add also in this view the fav functionality
             if(superHero.favorite){
                 superheroFav.setImageResource(R.drawable.heart_fill_frame)

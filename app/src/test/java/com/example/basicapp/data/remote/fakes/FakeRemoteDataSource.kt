@@ -20,4 +20,8 @@ class FakeRemoteDataSource: RemoteDataSource {
     override suspend fun setFav(heroID: String) {
         return generateSetFavResponse()
     }
+
+    override suspend fun login(user: String, password: String): Result<String> {
+        TODO("Not yet implemented")
+    }
 }

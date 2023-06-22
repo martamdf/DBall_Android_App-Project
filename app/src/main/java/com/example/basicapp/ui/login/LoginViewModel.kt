@@ -34,7 +34,6 @@ class LoginViewModel @Inject constructor(private val repository: Repository): Vi
                     _uiState.value = UiState.Error(result.toString())
                 }
                 _uiState.value = UiState.Idle
-
             }
         }
     }
