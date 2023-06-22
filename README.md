@@ -2,7 +2,6 @@
 ## Resumen de requisitos y observaciones
 
 
-
   ### Todas las llamadas a red se deberán hacer con Retrofit.
   Hecho.
   
@@ -19,14 +18,11 @@
   Hecho.
   
   ### El interfaz visual es abierto y no hay ninguna limitación, quedará a decisión del alumno que componentes usar, qué información mostrar y la representación de la misma.
-  Horrible y a mejorar.
+  A mejorar.
   
   ### Cada alumno deberá registrar su app en la api de Google Maps.
   Hecho.
   
   ### El testing es obligatorio. Qué y cuánto probar queda a cargo del alumno pero tiene que haber por lo menos test unitarios reales, mocks y fakes.
   Hecho.
-  
-  
- Creo que no me dejo ningún otro marrón (que yo sepa!! xD, alguno más sacarás)
- Muchas gracias por tu paciencia y disculpa el desastre!
+
