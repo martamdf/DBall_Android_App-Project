@@ -4,9 +4,7 @@
 
 
   ### Todas las llamadas a red se deberán hacer con Retrofit.
-  Hecho. Pero se me ha quedado 1 cosa en el tintero. Cuando hacemos el login, puede venir un String,
-  o un diccionario si existe un error. Lo gestioné como string desde el principio, y al intentar hacer la gestión de errores a última hora, pues no he tenido otro
-  remedio que meter un try/catch... 
+  Hecho.
   
   ### Siempre que se pueda se deberán paralelizar las corrutinas para no introducir esperas innecesarias.
   Hecho.
@@ -27,7 +25,7 @@
   Hecho.
   
   ### El testing es obligatorio. Qué y cuánto probar queda a cargo del alumno pero tiene que haber por lo menos test unitarios reales, mocks y fakes.
-  Un desastre y esto es lo que más me preocupa y frustra. 
+  Hecho.
   
   
  Creo que no me dejo ningún otro marrón (que yo sepa!! xD, alguno más sacarás)
