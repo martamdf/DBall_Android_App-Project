@@ -4,16 +4,15 @@
 
 
   ### Todas las llamadas a red se deberán hacer con Retrofit.
-  Hecho. Pero se me ha quedado 1 cosa en el tintero. Una de ellas, cuando hacemos el login, puede venir un String,
+  Hecho. Pero se me ha quedado 1 cosa en el tintero. Cuando hacemos el login, puede venir un String,
   o un diccionario si existe un error. Lo gestioné como string desde el principio, y al intentar hacer la gestión de errores a última hora, pues no he tenido otro
   remedio que meter un try/catch... 
   
   ### Siempre que se pueda se deberán paralelizar las corrutinas para no introducir esperas innecesarias.
-  Hecho. Pero por ejemplo en la vista de detalle, creo que debería haber separado la request de las localizaciones para evitar que se retrase la muestra del detalle
-  del heroe.
+  Hecho.
 
   ### El modelo de datos local deberá estar actualizado con el remoto, es decir, si actualizo un favorito en local, se deberá hacer una petición al remoto para incluir el cambio. Podéis realizar pruebas entre dispositivos para comprobar que se actualiza todo bien.
-  Hecho. En la pantalla de detalle. En la Lista de heroes hay también un corazoncito pero es solo informativo.
+  Hecho.
   
   ### La base de datos local deberá realizarse con Room.
   Hecho.
@@ -25,7 +24,7 @@
   Horrible y a mejorar.
   
   ### Cada alumno deberá registrar su app en la api de Google Maps.
-  Hecho
+  Hecho.
   
   ### El testing es obligatorio. Qué y cuánto probar queda a cargo del alumno pero tiene que haber por lo menos test unitarios reales, mocks y fakes.
   Un desastre y esto es lo que más me preocupa y frustra. 
