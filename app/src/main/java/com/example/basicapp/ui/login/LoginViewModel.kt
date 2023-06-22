@@ -22,12 +22,19 @@ class LoginViewModel @Inject constructor(private val repository: Repository): Vi
             val result = withContext(Dispatchers.IO) {
                 repository.login(email, pass)
             }
-            if(result != "Error"){
-                _uiState.value = UiState.OnTokenReceived(result)
+            if(result.isSuccess){
+                _uiState.value = UiState.OnTokenReceived
             }
             else {
-                _uiState.value = UiState.Error(result)
+                val unAuth = result.toString().contains("401")
+                if(unAuth){
+                    _uiState.value = UiState.AuthError("Error de autenticación.")
+                    }
+                else{
+                    _uiState.value = UiState.Error(result.toString())
+                }
                 _uiState.value = UiState.Idle
+
             }
         }
     }
@@ -35,6 +42,7 @@ class LoginViewModel @Inject constructor(private val repository: Repository): Vi
 
 sealed class UiState {
     object Idle : UiState()
-    data class OnTokenReceived(val token:String) : UiState()
+    object OnTokenReceived : UiState()
     data class Error(val message: String) : UiState()
+    data class AuthError(val message: String) : UiState()
 }

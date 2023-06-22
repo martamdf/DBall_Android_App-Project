@@ -35,6 +35,7 @@ class LoginActivity : AppCompatActivity() {
                 when (it){
                     is UiState.OnTokenReceived -> launchActivity()
                     is UiState.Idle -> Log.d("idle", viewModel.uiState.value.toString())
+                    is UiState.AuthError -> showError(it.message)
                     is UiState.Error -> showError(it.message)
                 }
             }

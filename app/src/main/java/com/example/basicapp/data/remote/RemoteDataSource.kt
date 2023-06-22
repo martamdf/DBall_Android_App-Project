@@ -10,5 +10,5 @@ interface RemoteDataSource {
 
     suspend fun setFav(heroID: String)
 
-    suspend fun login(user: String, password: String): String
+    suspend fun login(user: String, password: String): Result<String>
 }

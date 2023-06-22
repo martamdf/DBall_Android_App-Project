@@ -6,5 +6,5 @@ interface Repository {
     suspend fun getHeroes(): List<Superhero>
     suspend fun getHero(heroID: String): Superhero
     suspend fun setFav(hero: Superhero): Superhero
-    suspend fun login(user: String, password: String): String
+    suspend fun login(user: String, password: String): Result<String>
 }

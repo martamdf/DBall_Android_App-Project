@@ -6,7 +6,6 @@ import com.example.basicapp.data.remote.request.SetFavoriteRequestBody
 import com.example.basicapp.data.remote.response.GetHeroesResponse
 import okhttp3.Credentials
 import java.nio.charset.Charset
-
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -26,12 +25,13 @@ class RemoteDataSourceImpl @Inject constructor(private val api: DragonBallApi): 
         return api.setFav("Bearer $token",SetFavoriteRequestBody(heroID))
     }
 
-    override suspend fun login(user: String, password: String): String {
+    override suspend fun login(user: String, password: String): Result<String> {
         var user2 = "marta.maquedano@gmail.es"
         var password2 = "unacontraseñasupersegura"
-        val token = api.login(Credentials.basic(user2, password2, Charset.defaultCharset()))
-        this.token = token
-
+        val token = runCatching {api.login(Credentials.basic(user, password, Charset.defaultCharset()))}
+        if(token.isSuccess){
+            this.token = token.toString()
+        }
         return token
     }
 }

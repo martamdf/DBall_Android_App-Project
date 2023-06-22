@@ -43,7 +43,7 @@ class RepositoryImpl @Inject constructor(
         return hero
     }
 
-    override suspend fun login(user: String, password: String): String {
+    override suspend fun login(user: String, password: String): Result<String> {
         return remoteDataSource.login(user, password)
     }
 }
