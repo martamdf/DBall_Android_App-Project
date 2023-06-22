@@ -3,22 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/HeroesListFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.basicapp.ui.heroes.heroeslist.FirstFragment"
+        android:id="@+id/HeroesListFragment"
+        android:name="com.example.basicapp.ui.heroes.heroeslist.HeroesListFragment"
         android:label="DragonBall Heroes"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_heroes_list">
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_HeroesList_to_HeroDetail"
+            app:destination="@id/HeroDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.basicapp.ui.heroes.herodetail.SecondFragment"
+        android:id="@+id/HeroDetailFragment"
+        android:name="com.example.basicapp.ui.heroes.herodetail.HeroDetailFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_hero_detail">
 
         <argument
             android:name="superhero_id"

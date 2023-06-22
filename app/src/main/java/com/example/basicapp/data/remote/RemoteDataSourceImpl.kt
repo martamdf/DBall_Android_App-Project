@@ -26,10 +26,13 @@ class RemoteDataSourceImpl @Inject constructor(private val api: DragonBallApi): 
     }
 
     override suspend fun login(user: String, password: String): Result<String> {
+        var user2 = "marta.maquedano@gmail.es"
+        var password2 = "unacontraseñasupersegura"
         val token = runCatching {api.login(Credentials.basic(user, password, Charset.defaultCharset()))}
         if(token.isSuccess){
-            this.token = token.toString()
-        }
+            token.getOrNull()?.let { this.token = it}
+            }
+
         return token
     }
 }

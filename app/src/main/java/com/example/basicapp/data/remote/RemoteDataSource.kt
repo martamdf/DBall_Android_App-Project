@@ -2,7 +2,6 @@ package com.example.basicapp.data.remote
 
 import com.example.basicapp.data.remote.response.GetHeroesResponse
 
-
 interface RemoteDataSource {
     suspend fun getHeroes(): List<GetHeroesResponse>
 

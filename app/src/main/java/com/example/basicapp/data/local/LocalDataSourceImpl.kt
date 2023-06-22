@@ -20,14 +20,7 @@ class LocalDataSourceImpl @Inject constructor(private val dao: SuperheroDAO): Lo
         return dao.getHero(heroID)
     }
 
-//    override suspend fun getLocations(heroID: String): List<LocalSuperHeroLocation> {
-//        return dao.getLocation(heroID)
-//    }
-//    override suspend fun insertLocations(localHeroLocations: List<LocalSuperHeroLocation>) {
-//        dao.insertLocationsList(localHeroLocations)
-//    }
      override suspend fun deleteData() {
         dao.deleteDataSuperheros()
     }
-
 }

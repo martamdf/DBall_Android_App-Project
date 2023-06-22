@@ -16,17 +16,15 @@ object LocalModule {
 
     @Provides
     fun providesSuperheroDatabase(@ApplicationContext context: Context): SuperHeroDataBase.SuperheroDatabase {
-        val db = Room.databaseBuilder(
+        return Room.databaseBuilder(
             context,
             SuperHeroDataBase.SuperheroDatabase::class.java, "superhero-db"
         ).fallbackToDestructiveMigration().build()
-        return db
     }
 
     @Provides
     fun providesDao(db: SuperHeroDataBase.SuperheroDatabase): SuperheroDAO {
-        val dao = db.superheroDao()
-        return dao
+        return db.superheroDao()
     }
 
 }

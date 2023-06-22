@@ -23,7 +23,6 @@ object NetworkModule {
             .addLast(KotlinJsonAdapterFactory())
             .build()
     }
-
     @Provides
     fun providesOkhttp(): OkHttpClient {
         val httpLoggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT)
@@ -33,7 +32,6 @@ object NetworkModule {
 
         return clientBuilder.build()
     }
-
     @Provides
     fun providesRetrofit(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit {
 
@@ -43,7 +41,6 @@ object NetworkModule {
             .addConverterFactory(MoshiConverterFactory.create(moshi).asLenient())
             .build()
     }
-
     @Provides
     fun providesApi(retrofit: Retrofit): DragonBallApi {
         return retrofit.create(DragonBallApi::class.java)

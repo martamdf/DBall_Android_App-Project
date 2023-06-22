@@ -1,9 +1,6 @@
 package com.example.basicapp.ui.heroes.herodetail
 
-//import android.Manifest
-//import android.Manifest
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Address
@@ -17,11 +14,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.basicapp.R
+import com.example.basicapp.databinding.FragmentHeroDetailBinding
 import com.example.basicapp.ui.heroes.model.Superhero
 import com.example.basicapp.ui.heroes.model.SuperheroLocations
-import com.example.basicapp.databinding.FragmentSecondBinding
 import com.example.basicapp.utils.viewBinding
-import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -34,10 +30,10 @@ import java.util.Locale
 
 
 @AndroidEntryPoint
-class SecondFragment : Fragment(R.layout.fragment_second), OnMapReadyCallback {
+class HeroDetailFragment : Fragment(R.layout.fragment_hero_detail), OnMapReadyCallback {
 
-    private val binding: FragmentSecondBinding by viewBinding(FragmentSecondBinding::bind)
-    private val args: SecondFragmentArgs by navArgs()
+    private val binding: FragmentHeroDetailBinding by viewBinding(FragmentHeroDetailBinding::bind)
+    private val args: HeroDetailFragmentArgs by navArgs()
 
     private val viewModel: SuperHeroViewModel by viewModels()
     private lateinit var map: GoogleMap
@@ -74,7 +70,7 @@ class SecondFragment : Fragment(R.layout.fragment_second), OnMapReadyCallback {
         viewModel.setFav(hero)
     }
 
-    @SuppressLint("MissingPermission")
+   /* @SuppressLint("MissingPermission")
     private fun showLocation() {
         val fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
 
@@ -85,17 +81,8 @@ class SecondFragment : Fragment(R.layout.fragment_second), OnMapReadyCallback {
                 map.addMarker(marker)
             }
         }
-    }
+    }*/
 
-    private fun checkPermission(): Boolean {
-        return ActivityCompat.checkSelfPermission(
-            requireContext(),
-            Manifest.permission.ACCESS_COARSE_LOCATION
-        ) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-            requireContext(),
-            Manifest.permission.ACCESS_FINE_LOCATION
-        ) == PackageManager.PERMISSION_GRANTED
-    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -131,25 +118,6 @@ class SecondFragment : Fragment(R.layout.fragment_second), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
 
         map = googleMap
-
-        // Add a marker in Sydney and move the camera
-/*        val sydney = LatLng(-34.0, 151.0)
-        //val madrid = LatLng(40.0, -3.6)
-        map.addMarker(
-            MarkerOptions()
-                .position(sydney)
-        )*/
-
-        //map.addPolyline(PolylineOptions().addAll(listOf(sydney, madrid)).color(Color.BLUE).width(100F))
-//        map.setOnMarkerClickListener {
-//            //binding.customMarker.text = "Sydney"
-//            binding.customMarker.isVisible = true
-//            true
-//        }
-
-
-        //map.addCircle(CircleOptions().center(sydney).radius(10.0).fillColor(Color.BLACK))
-        //map.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
 
     private fun loadLocationsInMap(locations: List<SuperheroLocations>) {

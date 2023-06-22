@@ -9,13 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.basicapp.ui.heroes.SuperHeroesActivity
-import com.example.basicapp.databinding.FragmentFirstBinding
+import com.example.basicapp.databinding.FragmentHeroesListBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FirstFragment : Fragment() {
+class HeroesListFragment : Fragment() {
 
-    private var _binding: FragmentFirstBinding? = null
+    private var _binding: FragmentHeroesListBinding? = null
 
     private val viewModel: SuperHeroesViewModel by viewModels()
 
@@ -25,7 +25,7 @@ class FirstFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        _binding = FragmentHeroesListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -34,9 +34,12 @@ class FirstFragment : Fragment() {
 
         val adapter = SuperHeroAdapter() { superheroId: String ->
             findNavController().navigate(
-                FirstFragmentDirections.actionFirstFragmentToSecondFragment(
+                HeroesListFragmentDirections.actionHeroesListToHeroDetail(
                     superheroId
                 )
+                /*HeroesListFragmentDirections.actionFirstFragmentToSecondFragment(
+                    superheroId
+                )*/
             )
         }
 
