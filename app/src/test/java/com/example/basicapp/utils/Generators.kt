@@ -8,12 +8,12 @@ import com.example.basicapp.ui.heroes.model.Superhero
 import com.example.basicapp.ui.heroes.model.SuperheroLocations
 
 fun generateHeroes(size: Int): List<Superhero> {
-    val locations : List<SuperheroLocations> = emptyList()
     return (0 until size).map {
         Superhero(
             "ID $it",
             "Name $it",
             "photo",
+            "desc",
             false) }
 }
 
@@ -31,18 +31,20 @@ fun generateLocalSuperhero(size: Int): List<LocalSuperhero> {
     return (0 until size).map {
         LocalSuperhero(
             "ID $it",
-        "Name $it",
-        "photo",
-        false) }
+            "Name $it",
+            "description",
+            "photo",
+            false) }
 }
 fun generateOneLocalSuperhero(): LocalSuperhero {
-    return LocalSuperhero("ID", "Name", "photo", false)
+    return LocalSuperhero("ID", "Name", "photo", "photo", false)
 }
 
 fun generateOnePresentationSuperhero(): Superhero {
     return Superhero(
         "Paco Perez",
         "Name",
+        "description",
         "photo",
         false)
 }
@@ -60,6 +62,7 @@ fun generateGetHeroesLocationsResponse(size: Int): List<GetHeroLocationsResponse
 fun generateOneSuperhero(): Superhero {
     return Superhero("id",
         "Name",
+        "description",
         "photo",
         false)
 }

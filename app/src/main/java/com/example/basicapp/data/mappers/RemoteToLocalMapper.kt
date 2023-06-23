@@ -10,7 +10,6 @@ class RemoteToLocalMapper @Inject constructor(){
     fun mapGetHeroResponse(getHeroesResponse: List<GetHeroesResponse>): List<LocalSuperhero> {
         return getHeroesResponse.map { mapGetHeroResponse(it) }
     }
-
     private fun mapGetHeroResponse(getHeroesResponse: GetHeroesResponse): LocalSuperhero {
         return LocalSuperhero(getHeroesResponse.id,
             getHeroesResponse.name,
@@ -18,11 +17,9 @@ class RemoteToLocalMapper @Inject constructor(){
             getHeroesResponse.description,
             getHeroesResponse.favorite)
     }
-
     fun mapGetHeroLocationResponse(getHeroLocationsResponse: List<GetHeroLocationsResponse>): List<LocalSuperHeroLocation> {
         return getHeroLocationsResponse.map { mapGetHeroLocationResponse(it) }
     }
-
     private fun mapGetHeroLocationResponse(getHeroLocationResponse: GetHeroLocationsResponse): LocalSuperHeroLocation {
         return LocalSuperHeroLocation(getHeroLocationResponse.id,
             getHeroLocationResponse.latitud,
