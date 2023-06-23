@@ -7,6 +7,6 @@ import javax.inject.Inject
 
 class PresentationToLocalMapper @Inject constructor() {
     fun mapPresentationSuperheroes(superHero: Superhero): LocalSuperhero {
-        return LocalSuperhero(superHero.id, superHero.name, superHero.photo, superHero.favorite)
+        return LocalSuperhero(superHero.id, superHero.name, superHero.photo, superHero.description, superHero.favorite)
     }
 }

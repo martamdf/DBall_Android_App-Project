@@ -15,6 +15,7 @@ class RemoteToLocalMapper @Inject constructor(){
         return LocalSuperhero(getHeroesResponse.id,
             getHeroesResponse.name,
             getHeroesResponse.photo,
+            getHeroesResponse.description,
             getHeroesResponse.favorite)
     }
 

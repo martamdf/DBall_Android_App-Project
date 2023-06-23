@@ -49,7 +49,8 @@ class HeroDetailFragment : Fragment(R.layout.fragment_hero_detail), OnMapReadyCa
 
         with(binding){
             viewModel.hero.observe(viewLifecycleOwner){ hero ->
-                textviewSecond.text = hero.name
+                textviewHeroName.text = hero.name
+                textviewHeroDescription.text = hero.description
                 Picasso.get().load(hero.photo).into(heroImageView)
 
                 if(hero.favorite){

@@ -8,6 +8,7 @@ import androidx.room.PrimaryKey
 data class LocalSuperhero(
     @PrimaryKey @ColumnInfo(name = "id") val id: String,
     @ColumnInfo(name = "name") val name: String,
+    @ColumnInfo(name = "description") val description: String,
     @ColumnInfo(name = "photo") val photo: String,
     @ColumnInfo(name = "favorite") val favorite: Boolean,
 )

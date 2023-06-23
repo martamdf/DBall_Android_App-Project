@@ -6,7 +6,7 @@ import com.example.basicapp.data.local.model.LocalSuperHeroLocation
 import com.example.basicapp.data.local.model.LocalSuperhero
 
 class SuperHeroDataBase {
-    @Database(entities = [LocalSuperhero::class, LocalSuperHeroLocation::class], version = 4)
+    @Database(entities = [LocalSuperhero::class, LocalSuperHeroLocation::class], version = 5)
     abstract class SuperheroDatabase : RoomDatabase() {
         abstract fun superheroDao(): SuperheroDAO
     }
