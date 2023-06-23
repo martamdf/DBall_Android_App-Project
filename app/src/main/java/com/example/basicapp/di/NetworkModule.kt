@@ -1,6 +1,6 @@
 package com.example.basicapp.di
 
-import com.example.basicapp.Data.remote.DragonBallApi
+import com.example.basicapp.data.remote.DragonBallApi
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -16,31 +16,31 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
+    private const val BASE_URL = "https://dragonball.keepcoding.education/"
     @Provides
     fun providesMoshi(): Moshi {
         return Moshi.Builder()
             .addLast(KotlinJsonAdapterFactory())
             .build()
     }
-
     @Provides
     fun providesOkhttp(): OkHttpClient {
-        return OkHttpClient.Builder()
-            .addInterceptor(HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT).apply {
-                level = HttpLoggingInterceptor.Level.BODY
-            }).build()
-    }
+        val httpLoggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT)
+        val clientBuilder = OkHttpClient.Builder()
+        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+        clientBuilder.addInterceptor(httpLoggingInterceptor)
 
+        return clientBuilder.build()
+    }
     @Provides
     fun providesRetrofit(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit {
 
         return Retrofit.Builder()
-            .baseUrl("https://dragonball.keepcoding.education/")
+            .baseUrl(BASE_URL)
             .client(okHttpClient)
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .addConverterFactory(MoshiConverterFactory.create(moshi).asLenient())
             .build()
     }
-
     @Provides
     fun providesApi(retrofit: Retrofit): DragonBallApi {
         return retrofit.create(DragonBallApi::class.java)

@@ -2,8 +2,8 @@ package com.example.basicapp.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.basicapp.Data.local.SuperHeroDataBase
-import com.example.basicapp.Data.local.SuperheroDAO
+import com.example.basicapp.data.local.SuperHeroDataBase
+import com.example.basicapp.data.local.SuperheroDAO
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,17 +16,15 @@ object LocalModule {
 
     @Provides
     fun providesSuperheroDatabase(@ApplicationContext context: Context): SuperHeroDataBase.SuperheroDatabase {
-        val db = Room.databaseBuilder(
+        return Room.databaseBuilder(
             context,
             SuperHeroDataBase.SuperheroDatabase::class.java, "superhero-db"
         ).fallbackToDestructiveMigration().build()
-        return db
     }
 
     @Provides
     fun providesDao(db: SuperHeroDataBase.SuperheroDatabase): SuperheroDAO {
-        val dao = db.superheroDao()
-        return dao
+        return db.superheroDao()
     }
 
 }
