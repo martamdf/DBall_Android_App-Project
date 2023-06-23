@@ -5,5 +5,5 @@ data class Superhero(
     val name: String,
     val photo: String,
     var favorite: Boolean,
-    var locations: List<SuperheroLocations>?,
+    //var locations: List<SuperheroLocations>?,
 )

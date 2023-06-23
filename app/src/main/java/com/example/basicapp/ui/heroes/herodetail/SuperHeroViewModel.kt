@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.basicapp.data.Repository
 import com.example.basicapp.ui.heroes.model.Superhero
+import com.example.basicapp.ui.heroes.model.SuperheroLocations
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,12 +18,24 @@ class SuperHeroViewModel @Inject constructor(private val repository: Repository)
 
     private val _hero = MutableLiveData<Superhero>()
     val hero: LiveData<Superhero> get() = _hero
+
+    private val _locations = MutableLiveData<List<SuperheroLocations>>()
+    val locations: LiveData<List<SuperheroLocations>> get() = _locations
+
     fun getHero(heroID: String) {
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {
                 repository.getHero(heroID)
             }
             _hero.value = result
+        }
+    }
+    fun getLocations(heroID: String) {
+        viewModelScope.launch {
+            val result = withContext(Dispatchers.IO) {
+                repository.getLocations(heroID)
+            }
+            _locations.value = result
         }
     }
     fun setFav(hero: Superhero) {

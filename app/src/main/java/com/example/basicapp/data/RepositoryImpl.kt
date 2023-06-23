@@ -1,11 +1,13 @@
 package com.example.basicapp.data
 
 import com.example.basicapp.data.local.LocalDataSource
+import com.example.basicapp.data.local.model.LocalSuperHeroLocation
 import com.example.basicapp.data.mappers.LocalToPresentationMapper
 import com.example.basicapp.data.mappers.PresentationToLocalMapper
 import com.example.basicapp.data.mappers.RemoteToLocalMapper
 import com.example.basicapp.data.remote.RemoteDataSource
 import com.example.basicapp.ui.heroes.model.Superhero
+import com.example.basicapp.ui.heroes.model.SuperheroLocations
 
 import javax.inject.Inject
 
@@ -26,12 +28,14 @@ class RepositoryImpl @Inject constructor(
         return localToPresentationMapper.mapLocalSuperheroes(localDataSource.getHeroes())
     }
     override suspend fun getHero(heroID: String): Superhero {
-        val superheroLocations = remoteToLocalMapper.mapGetHeroLocationResponse(remoteDataSource.getLocations(heroID))
-        val superheroLocationsUI = localToPresentationMapper.mapLocalSuperheroLocations(superheroLocations)
-        val superhero = localToPresentationMapper.mapLocalSuperheroes(localDataSource.getHero(heroID))
-        superhero.locations = superheroLocationsUI
-        return superhero
+        return localToPresentationMapper.mapLocalSuperheroes(localDataSource.getHero(heroID))
     }
+
+    override suspend fun getLocations(heroID: String): List<SuperheroLocations>{
+        val superheroLocations = remoteToLocalMapper.mapGetHeroLocationResponse(remoteDataSource.getLocations(heroID))
+        return localToPresentationMapper.mapLocalSuperheroLocations(superheroLocations)
+    }
+
     override suspend fun setFav(hero: Superhero): Superhero {
         hero.favorite = !hero.favorite
         localDataSource.insertHero(presentationToLocalMapper.mapPresentationSuperheroes(hero))

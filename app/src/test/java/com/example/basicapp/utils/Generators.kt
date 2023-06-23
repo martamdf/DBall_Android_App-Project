@@ -14,8 +14,7 @@ fun generateHeroes(size: Int): List<Superhero> {
             "ID $it",
             "Name $it",
             "photo",
-            false,
-            locations) }
+            false) }
 }
 
 fun generateGetHeroesResponse(size: Int): List<GetHeroesResponse> {
@@ -41,12 +40,11 @@ fun generateOneLocalSuperhero(): LocalSuperhero {
 }
 
 fun generateOnePresentationSuperhero(): Superhero {
-    val locations : List<SuperheroLocations> = emptyList()
     return Superhero(
         "Paco Perez",
         "Name",
         "photo",
-        false, locations)
+        false)
 }
 
 fun generateGetHeroesLocationsResponse(size: Int): List<GetHeroLocationsResponse> {
@@ -63,8 +61,7 @@ fun generateOneSuperhero(): Superhero {
     return Superhero("id",
         "Name",
         "photo",
-        false,
-        emptyList())
+        false)
 }
 
 fun generateSetFavResponse() {

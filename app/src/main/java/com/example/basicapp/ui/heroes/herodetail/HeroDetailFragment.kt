@@ -45,6 +45,7 @@ class HeroDetailFragment : Fragment(R.layout.fragment_hero_detail), OnMapReadyCa
         mapFragment.getMapAsync(this)
 
         viewModel.getHero(args.superheroId)
+        viewModel.getLocations(args.superheroId)
 
         with(binding){
             viewModel.hero.observe(viewLifecycleOwner){ hero ->
@@ -53,15 +54,18 @@ class HeroDetailFragment : Fragment(R.layout.fragment_hero_detail), OnMapReadyCa
 
                 if(hero.favorite){
                     isFav.setImageResource(R.drawable.heart_fill_frame)
+                    isFav.alpha = 1f;
                 }else{
                     isFav.setImageResource(R.drawable.heart_empty_frame)
+                    isFav.alpha = 1f;
                 }
-
-                hero.locations?.let { loadLocationsInMap(it) }
 
                 isFav.setOnClickListener {
                     setFav(hero)
                 }
+            }
+            viewModel.locations.observe(viewLifecycleOwner){ locations ->
+                loadLocationsInMap(locations)
             }
         }
     }

@@ -46,7 +46,7 @@ class SuperHeroViewModelTest {
         val actualLiveData = viewModel.hero.getOrAwaitValue()
 
         // THEN
-        assert(actualLiveData.locations?.isEmpty() ?: false)
+        assert(!actualLiveData.favorite)
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)

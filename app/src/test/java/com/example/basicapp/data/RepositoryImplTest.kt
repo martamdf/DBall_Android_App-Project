@@ -59,7 +59,7 @@ class RepositoryImplTest {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun `WHEN getHero EXPECT returns a hero with a list of locations (3)`() = runTest {
+    fun `WHEN getHero EXPECT returns a hero`() = runTest {
         // GIVEN
         localDataSource = FakeLocalDataSource()
         remoteDataSource = FakeRemoteDataSource()
@@ -69,7 +69,7 @@ class RepositoryImplTest {
         val actual = repositoryImpl.getHero("id")
 
         // THEN
-        assert(actual.locations?.size == 3)
+        assert(!actual.favorite)
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
