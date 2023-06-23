@@ -16,9 +16,10 @@
         android:layout_weight="5"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
-        android:paddingLeft="16dp"
-        android:text="Test"
-        android:textSize="24dp" />
+        android:paddingStart="16dp"
+        android:text="@string/test"
+        android:textSize="24sp"
+        tools:ignore="RtlSymmetry" />
 
     <ImageView
         android:id="@+id/is_fav"
@@ -28,9 +29,8 @@
         android:layout_margin="10dp"
         android:layout_weight="1"
         android:alpha="0"
-        android:src="@drawable/heart_fill_frame" />
-
-
+        android:src="@drawable/heart_fill_frame"
+        android:contentDescription="@string/favourite_heart" />
 </LinearLayout>
 
     <ImageView
@@ -38,7 +38,8 @@
         android:layout_width="match_parent"
         android:layout_height="190dp"
         android:scaleType="centerCrop"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        tools:src="@tools:sample/backgrounds/scenic"
+        android:contentDescription="@string/hero_image" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,12 +47,11 @@
 
         <TextView
             android:id="@+id/textview_hero_description"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:layout_weight="1"
             android:text="@string/lorem_ipsum" />
-
     </LinearLayout>
 
     <FrameLayout
@@ -62,7 +62,7 @@
             android:id="@+id/map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/custom_marker"
